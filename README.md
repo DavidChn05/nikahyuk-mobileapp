@@ -16,7 +16,7 @@ NikahYuk is an innovative mobile application designed to assist Indonesian coupl
 
 ### Getting Started: 🚀
 
-To get started with NikahYuk, please refer to the [README.md]([link-to-readme-file](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/README.md)) file for instructions on installation, setup, and usage.
+To get started with NikahYuk, please refer to the [README.md] file for instructions on installation, setup, and usage.
 
 A few resources to get you started if this is your first Flutter project:
 
@@ -37,5 +37,5 @@ If you would like to contribute to this project, please follow these steps:
 - Submit a pull request to the main repository, explaining the changes you made.
 
 ### License: 💎
-NikahYuk is released under the [MIT License]([link-to-license-file](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/LICENSE)). 
+NikahYuk is released under the [MIT License]. 
 Please refer to the license file for more details.
