@@ -18,8 +18,35 @@ NikahYuk is an innovative mobile application designed to assist Indonesian coupl
 
 To get started with NikahYuk, please refer to the [README.md](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/README.md) file for instructions on installation, setup, and usage.
 
-A few resources to get you started if this is your first Flutter project:
+Here's the "Getting Started" guide for running a Flutter application from a GitHub repository:
 
+1. Make sure you have installed the Flutter SDK and set up the Flutter development environment on your computer. You can follow the Flutter guide at [https://flutter.dev/docs/get-started/install](https://flutter.dev/docs/get-started/install) to set up the Flutter SDK.
+2. Open a terminal or command prompt on your computer.
+3. Clone the Flutter application repository from GitHub using the following command:
+```
+git clone <Repository URL>
+```
+Replace `<Repository URL>` with the URL of the Flutter repository you want to clone. For example:
+```
+git clone https://github.com/yourrepository/example-flutter-app.git
+```
+4. Once the repository is cloned, navigate to the Flutter project directory using the following command:
+```
+cd example-flutter-app
+```
+5. Next, ensure that you are connected to a physical device or emulator that is set up. You can run the following command to check the connected devices:
+```
+flutter devices
+```
+6. If a device is connected, you can run the Flutter application using the following command:
+```
+flutter run
+```
+This command will build and run the Flutter application on the connected device or the configured emulator.
+
+By following the steps above, you can run a Flutter application from a GitHub repository that has been cloned to your computer. 
+
+Another references:
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
