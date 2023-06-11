@@ -23,14 +23,10 @@ class Body extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        MyAccountMenu(
-            text: "Change Name",
-            press: () {
-              Navigator.pushNamed(context, ChangeName.routeName);
-            }),
-        MyAccountMenu(text: "Bio", press: () {}),
-        MyAccountMenu(text: "Jenis Kelamin", press: () {}),
-        MyAccountMenu(text: "Tanggal Lahir", press: () {}),
+        MyAccountMenu(text: "Full Name"),
+        MyAccountMenu(text: "Email"),
+        MyAccountMenu(text: "Password"),
+        MyAccountMenu(text: "Re-Enter Password"),
       ],
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:nikahyuk/constants.dart';
 import 'package:nikahyuk/screens/home_page/homepage.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:nikahyuk/screens/providers/auth.dart';
 
@@ -59,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
       onSignup: _signupUser,
       theme: LoginTheme(
         primaryColor: kPrimaryColor,
+        accentColor: kSecondaryColor,
         titleStyle: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
