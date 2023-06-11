@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:nikahyuk/screens/myaccount/components/changename.dart';
+import 'package:nikahyuk/screens/myaccount/myaccount.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
 import 'package:nikahyuk/screens/sign_in/signin_screen.dart';
 import 'package:nikahyuk/screens/forgot_password/forgotpassword_screen.dart';
@@ -23,4 +25,6 @@ final Map<String, WidgetBuilder> routes = {
   MyChart.routeName: (context) => MyChart(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   LoginPage.routeName: (context) => LoginPage(),
+  MyAccount.routeName: (context) => MyAccount(),
+  ChangeName.routeName: (context) => ChangeName(),
 };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nikahyuk/constants.dart';
 import 'package:nikahyuk/screens/detail_account/detailAccount.dart';
+import 'package:nikahyuk/screens/myaccount/myaccount.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
 import 'package:nikahyuk/theme.dart';
 
@@ -21,7 +22,9 @@ class Body extends StatelessWidget {
         ),
         ProfileMenu(
           icon: 'assets/icons/account.png',
-          press: () {},
+          press: () {
+            Navigator.pushNamed(context, MyAccount.routeName);
+          },
           text: 'My Account',
         ),
         ProfileMenu(
