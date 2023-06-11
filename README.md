@@ -63,6 +63,6 @@ If you would like to contribute to this project, please follow these steps:
 - Push the changes to your forked repository.
 - Submit a pull request to the main repository, explaining the changes you made.
 
-### License: 💎
+### License: 📄
 NikahYuk is released under the [MIT License](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/LICENSE). 
 Please refer to the license file for more details.
