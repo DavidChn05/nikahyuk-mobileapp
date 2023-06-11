@@ -14,10 +14,6 @@ NikahYuk is an innovative mobile application designed to assist Indonesian coupl
 - Integration with payment gateways for secure transactions.
 - Integration with social media platforms for easy sharing and community building.
 
-### License: 💎
-
-NikahYuk is released under the [MIT License]([link-to-license-file](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/LICENSE)). Please refer to the license file for more details.
-
 ### Getting Started: 🚀
 
 To get started with NikahYuk, please refer to the [README.md]([link-to-readme-file](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/README.md)) file for instructions on installation, setup, and usage.
@@ -34,12 +30,12 @@ samples, guidance on mobile development, and a full API reference.
 ### Contribution: 🤝
 If you would like to contribute to this project, please follow these steps:
 
-Fork the repository to your GitHub account.
+- Fork the repository to your GitHub account.
+- Create a new branch for your feature or bug fix.
+- Make the necessary changes and commit them.
+- Push the changes to your forked repository.
+- Submit a pull request to the main repository, explaining the changes you made.
 
-Create a new branch for your feature or bug fix.
-
-Make the necessary changes and commit them.
-
-Push the changes to your forked repository.
-
-Submit a pull request to the main repository, explaining the changes you made.
+### License: 💎
+NikahYuk is released under the [MIT License]([link-to-license-file](https://github.com/DavidChn05/nikahyuk-mobileapp/blob/master/LICENSE)). 
+Please refer to the license file for more details.
