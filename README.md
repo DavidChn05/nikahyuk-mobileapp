@@ -24,10 +24,6 @@ Here's the "Getting Started" guide for running a Flutter application from a GitH
 2. Open a terminal or command prompt on your computer.
 3. Clone the Flutter application repository from GitHub using the following command:
 ```
-git clone <Repository URL>
-```
-Replace `<Repository URL>` with the URL of the Flutter repository you want to clone. For example:
-```
 git clone https://github.com/yourrepository/example-flutter-app.git
 ```
 4. Once the repository is cloned, navigate to the Flutter project directory using the following command:
