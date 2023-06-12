@@ -2,20 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final String? id;
-  final String fullname;
+  final String fullName;
   final String email;
   final String password;
 
   const UserModel({
     this.id,
-    required this.fullname,
+    required this.fullName,
     required this.email,
     required this.password,
   });
 
   toJson() {
     return {
-      "FullName": fullname,
+      "FullName": fullName,
       "Email": email,
       "Password": password,
     };
@@ -27,8 +27,8 @@ class UserModel {
     final data = document.data()!;
     return UserModel(
       id: document.id,
-      fullname: data["FullName"],
       email: data["Email"],
+      fullName: data["FullName"],
       password: data["Password"],
     );
   }

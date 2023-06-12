@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nikahyuk/models/user_model.dart';
 import 'package:nikahyuk/screens/authentication/repository/authentication_repository.dart';
 import 'package:nikahyuk/screens/authentication/repository/user_repository.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get instance => Get.find();
 
+//repositories
   final _authRepo = Get.put(AuthenticationRepository());
   final _userRepo = Get.put(UserRepository());
 
@@ -17,5 +19,9 @@ class ProfileController extends GetxController {
     } else {
       Get.snackbar("Error", "Login to continue");
     }
+  }
+
+  updateRecord(UserModel user) async {
+    await _userRepo.updateUserRecord(user);
   }
 }

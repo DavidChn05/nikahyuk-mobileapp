@@ -25,7 +25,13 @@ class Body extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasData) {
-                UserModel userData = snapshot.data as UserModel;
+                UserModel user = snapshot.data as UserModel;
+
+                //controllers
+                final fullname = TextEditingController(text: user.fullName);
+                final email = TextEditingController(text: user.email);
+                final password = TextEditingController(text: user.password);
+
                 return Column(
                   children: [
                     SizedBox(
@@ -36,7 +42,7 @@ class Body extends StatelessWidget {
                       height: 50,
                     ),
                     TextFormField(
-                      initialValue: userData.fullname,
+                      controller: fullname,
                       decoration: InputDecoration(
                         labelText: "FullName",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -46,7 +52,7 @@ class Body extends StatelessWidget {
                       height: 20,
                     ),
                     TextFormField(
-                      initialValue: userData.email,
+                      controller: email,
                       decoration: InputDecoration(
                         labelText: "Email",
                         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -56,7 +62,7 @@ class Body extends StatelessWidget {
                       height: 20,
                     ),
                     TextFormField(
-                      initialValue: userData.password,
+                      controller: password,
                       keyboardType: TextInputType.visiblePassword,
                       decoration: InputDecoration(
                         labelText: "Password",
@@ -69,7 +75,17 @@ class Body extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      child: DefaultButton(text: "Edit Profile", press: () {}),
+                      child: DefaultButton(
+                        text: "Edit Profile",
+                        press: () async {
+                          final userData = UserModel(
+                            email: email.text.trim(),
+                            fullName: fullname.text.trim(),
+                            password: password.text.trim(),
+                          );
+                          await controller.updateRecord(userData);
+                        },
+                      ),
                     ),
                     SizedBox(
                       height: 20,

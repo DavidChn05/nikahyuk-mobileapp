@@ -47,7 +47,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   // );
 
                   final user = UserModel(
-                      fullname: controller.fullname.text.trim(),
+                      fullName: controller.fullName.text.trim(),
                       email: controller.email.text.trim(),
                       password: controller.password.text.trim());
                   SignUpController.instance.createUser(user);
@@ -68,7 +68,7 @@ class _SignUpFormState extends State<SignUpForm> {
         } else
           null;
       },
-      controller: controller.fullname,
+      controller: controller.fullName,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: "Full Name",

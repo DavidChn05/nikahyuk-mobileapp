@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 import '../enums.dart';
 import '../screens/home_page/homepage.dart';

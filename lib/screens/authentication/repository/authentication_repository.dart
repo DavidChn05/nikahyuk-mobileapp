@@ -32,7 +32,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   Future<void> createUserWithEmailAndPassword(
-      String email, String password) async {
+      String email, String password, String fullName) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -47,8 +47,7 @@ class AuthenticationRepository extends GetxController {
         ex.message,
         backgroundColor: Colors.red,
         colorText: Colors.white,
-      );
-      throw ex; // Optional: rethrow the exception to propagate it further
+      ); // Optional: rethrow the exception to propagate it further
     } catch (_) {
       final ex = SignUpFailure('An unknown error occurred.');
       print("EXCEPTION - ${ex.message}");

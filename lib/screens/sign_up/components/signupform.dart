@@ -46,7 +46,8 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState!.validate()) {
                 SignUpController.instance.registerUser(
                     controller.email.text.trim(),
-                    controller.password.text.trim());
+                    controller.password.text.trim(),
+                    controller.fullName.text.trim());
               }
             },
           ),
@@ -63,7 +64,7 @@ class _SignFormState extends State<SignForm> {
         hintText: "Enter your name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
-      controller: controller.fullname,
+      controller: controller.fullName,
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nikahyuk/models/user_model.dart';
+import 'package:collection/collection.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find();
@@ -32,17 +33,20 @@ class UserRepository extends GetxController {
   }
 
   /// Fetch all users or User details
-  Future<UserModel> getUserDetails(String email) async {
+
+  Future<UserModel?> getUserDetails(String email) async {
     final snapshot =
         await _db.collection("Users").where("Email", isEqualTo: email).get();
-    final userData = snapshot.docs.map((e) => UserModel.fromSnapShot(e)).single;
-    return userData;
+    if (snapshot.docs.isNotEmpty) {
+      final userData =
+          snapshot.docs.map((e) => UserModel.fromSnapShot(e)).single;
+      return userData;
+    } else {
+      return null; // Tidak ada dokumen yang ditemukan
+    }
   }
 
-  Future<List<UserModel>> allUserData() async {
-    final snapshot = await _db.collection("Users").get();
-    final userData =
-        snapshot.docs.map((e) => UserModel.fromSnapShot(e)).toList();
-    return userData;
+  Future<void> updateUserRecord(UserModel user) async {
+    await _db.collection("Users").doc(user.id).update(user.toJson());
   }
 }
