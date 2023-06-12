@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../../components/defaultbutton.dart';
 import '../../authentication/controllers/signup_controllers.dart';
-import '../../providers/customers.dart';
 
 class SignForm extends StatefulWidget {
   const SignForm({super.key});

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:nikahyuk/models/repository.dart';
 import 'package:nikahyuk/screens/details/detailScreen.dart';
 
 import '../../../components/product_card.dart';
 import '../../../models/product.dart';
-import '../../../models/carts.dart';
 import 'sectiontitle.dart';
 
 class PopularProducts extends StatefulWidget {
@@ -18,9 +15,6 @@ class PopularProducts extends StatefulWidget {
 }
 
 class _PopularProductsState extends State<PopularProducts> {
-  List<Cart> carts = [];
-  Repository repository = Repository();
-
   // getData() async {
   //   carts = await repository.getData();
   // }

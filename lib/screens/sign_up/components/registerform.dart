@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nikahyuk/models/user_model.dart';
+import 'package:nikahyuk/screens/login_success/loginsuccess_screen.dart';
 
 import '../../../components/defaultbutton.dart';
 import '../../authentication/controllers/signup_controllers.dart';
-import '../../authentication/repository/authentication_repository.dart';
-import '../../authentication/repository/exceptions/signup_failure.dart';
-import '../../forgot_password/forgotpassword_screen.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -32,19 +31,6 @@ class _SignUpFormState extends State<SignUpForm> {
             height: 30,
           ),
           buildPasswordFormField(),
-          Row(
-            children: [
-              Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(
-                    context, ForgotPasswordScreen.routeName),
-                child: Text(
-                  "Forgot Password",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              ),
-            ],
-          ),
           SizedBox(
             height: 20,
           ),
@@ -53,11 +39,18 @@ class _SignUpFormState extends State<SignUpForm> {
             press: () async {
               if (_formKey.currentState!.validate()) {
                 try {
-                  await SignUpController.instance
-                      .createUserWithEmailAndPassword(
-                    controller.email.text.trim(),
-                    controller.password.text.trim(),
-                  );
+                  // Email & Password Authentification
+                  // await SignUpController.instance
+                  //     .createUserWithEmailAndPassword(
+                  //   controller.email.text.trim(),
+                  //   controller.password.text.trim(),
+                  // );
+
+                  final user = UserModel(
+                      fullname: controller.fullname.text.trim(),
+                      email: controller.email.text.trim(),
+                      password: controller.password.text.trim());
+                  SignUpController.instance.createUser(user);
                 } catch (e) {}
               }
             },

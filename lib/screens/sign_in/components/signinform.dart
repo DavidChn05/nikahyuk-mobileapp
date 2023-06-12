@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nikahyuk/components/defaultbutton.dart';
+import 'package:nikahyuk/constants.dart';
+import 'package:nikahyuk/screens/authentication/controllers/signup_controllers.dart';
+import 'package:nikahyuk/screens/authentication/repository/exceptions/authentication_repository.dart';
 
-import '../../../../components/defaultbutton.dart';
-import '../../../../constants.dart';
-import '../../../authentication/controllers/signup_controllers.dart';
-import '../../../authentication/repository/authentication_repository.dart';
-import '../../../authentication/repository/exceptions/signin_failure.dart';
-import '../../../forgot_password/forgotpassword_screen.dart';
+import '../../authentication/repository/exceptions/signin_failure.dart';
+import '../../forgot_password/forgotpassword_screen.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -70,7 +70,9 @@ class _SignInFormState extends State<SignInForm> {
                     controller.email.text.trim(),
                     controller.password.text.trim(),
                   );
-                } on SignInFailure catch (ex) {}
+                } on SignInFailure catch (ex) {
+                  null;
+                }
               }
             },
           ),

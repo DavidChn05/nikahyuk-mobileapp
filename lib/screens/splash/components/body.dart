@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nikahyuk/components/defaultbutton.dart';
 import 'package:nikahyuk/constants.dart';
-import 'package:nikahyuk/screens/providers/auth.dart';
-import 'package:nikahyuk/screens/sign_in/login_page.dart';
-import 'package:nikahyuk/screens/sign_in/notused/signin_screen.dart';
-import 'package:nikahyuk/screens/sign_up/signup_screen.dart';
+import 'package:nikahyuk/screens/sign_in/signin_screen.dart';
 import '../components/splash_content.dart';
 
 class Body extends StatefulWidget {

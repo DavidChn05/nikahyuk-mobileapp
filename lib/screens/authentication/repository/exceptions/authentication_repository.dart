@@ -1,14 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nikahyuk/screens/authentication/repository/exceptions/signin_failure.dart';
 import 'package:nikahyuk/screens/authentication/repository/exceptions/signup_failure.dart';
 import 'package:nikahyuk/screens/home_page/homepage.dart';
 import 'package:nikahyuk/screens/login_success/loginsuccess_screen.dart';
-import 'package:nikahyuk/screens/sign_in/notused/signin_screen.dart';
+import 'package:nikahyuk/screens/sign_in/signin_screen.dart';
 import 'package:nikahyuk/screens/sign_up/signup_screen.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
-
-import 'exceptions/signin_failure.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance =>

@@ -6,9 +6,9 @@ import 'package:nikahyuk/screens/authentication/controllers/signup_controllers.d
 import 'package:nikahyuk/screens/forgot_password/forgotpassword_screen.dart';
 import 'package:nikahyuk/screens/login_success/loginsuccess_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nikahyuk/screens/sign_in/notused/components/signinform.dart';
+import 'package:nikahyuk/screens/sign_in/components/signinform.dart';
 
-import '../../../../components/noaccount_screen.dart';
+import '../../../components/noaccount_screen.dart';
 
 class Body extends StatefulWidget {
   @override
