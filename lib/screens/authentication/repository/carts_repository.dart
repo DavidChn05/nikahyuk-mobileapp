@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nikahyuk/models/user_model.dart';
 
-class UserRepository extends GetxController {
-  static UserRepository get instance => Get.find();
+class CartsRepository extends GetxController {
+  static CartsRepository get instance => Get.find<CartsRepository>();
 
-  final _db = FirebaseFirestore.instance;
+  final _cr = FirebaseFirestore.instance;
 
-  createUser(UserModel user) async {
-    await _db
+  addCarts(UserModel user, double price) async {
+    await _cr
         .collection("Users")
         .add(user.toJson())
         .then((_) => Get.snackbar(

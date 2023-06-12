@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:nikahyuk/components/defaultbutton.dart';
 import 'package:nikahyuk/constants.dart';
 import 'package:nikahyuk/screens/authentication/controllers/signup_controllers.dart';
-import 'package:nikahyuk/screens/authentication/repository/exceptions/authentication_repository.dart';
+import 'package:nikahyuk/screens/authentication/repository/authentication_repository.dart';
 
 import '../../authentication/repository/exceptions/signin_failure.dart';
 import '../../forgot_password/forgotpassword_screen.dart';

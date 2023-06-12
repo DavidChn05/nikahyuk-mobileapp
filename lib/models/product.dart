@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Product with ChangeNotifier {
+class Product {
   final String title, description;
   final List<String> images;
   final List<Color> colors;

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nikahyuk/routs.dart';
-import 'package:nikahyuk/screens/authentication/repository/exceptions/authentication_repository.dart';
+import 'package:nikahyuk/screens/authentication/repository/authentication_repository.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
 
 import 'firebase_options.dart';
