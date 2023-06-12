@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nikahyuk/components/hasaccount_screen.dart';
 import 'package:nikahyuk/screens/authentication/controllers/signup_controllers.dart';
-
-import '../../sign_in/notused/components/body.dart';
+import 'package:nikahyuk/screens/sign_up/components/registerform.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -41,7 +40,7 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-                SignForm(),
+                SignFormUp(),
                 SizedBox(height: 25),
                 HasAccountScreen(),
                 SizedBox(

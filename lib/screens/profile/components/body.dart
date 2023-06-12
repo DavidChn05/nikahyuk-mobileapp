@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nikahyuk/constants.dart';
+import 'package:nikahyuk/screens/authentication/repository/authentication_repository.dart';
 import 'package:nikahyuk/screens/detail_account/detailAccount.dart';
 import 'package:nikahyuk/screens/myaccount/myaccount.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
@@ -45,7 +46,7 @@ class Body extends StatelessWidget {
         ProfileMenu(
           icon: 'assets/icons/exit.png',
           press: () {
-            Navigator.pushNamed(context, splashScreen.routeName);
+            AuthenticationRepository.intance.logout();
           },
           text: 'Log Out',
         ),

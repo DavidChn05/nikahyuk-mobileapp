@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class SignUpFailure implements Exception {
+class SignInFailure implements Exception {
   final String message;
 
-  SignUpFailure(this.message);
+  SignInFailure(this.message);
 
-  factory SignUpFailure.fromFirebaseException(FirebaseAuthException exception) {
+  factory SignInFailure.fromFirebaseException(FirebaseAuthException exception) {
     String message = 'An error occurred during sign up.';
 
     // Map Firebase error codes to custom error messages
@@ -28,11 +28,11 @@ class SignUpFailure implements Exception {
         break;
     }
 
-    return SignUpFailure(message);
+    return SignInFailure(message);
   }
 
   @override
   String toString() {
-    return 'SignUpFailure: $message';
+    return 'SignInFailure: $message';
   }
 }

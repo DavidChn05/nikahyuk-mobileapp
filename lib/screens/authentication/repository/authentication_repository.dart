@@ -1,13 +1,12 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:http/http.dart';
-import 'package:nikahyuk/screens/authentication/controllers/repository/exceptions/signup_failure.dart';
+import 'package:nikahyuk/screens/authentication/repository/exceptions/signup_failure.dart';
 import 'package:nikahyuk/screens/home_page/homepage.dart';
+import 'package:nikahyuk/screens/login_success/loginsuccess_screen.dart';
+import 'package:nikahyuk/screens/sign_in/notused/signin_screen.dart';
 import 'package:nikahyuk/screens/splash/splashscreen.dart';
+
+import 'exceptions/signin_failure.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get intance => Get.find();
@@ -18,6 +17,7 @@ class AuthenticationRepository extends GetxController {
 
   @override
   void onReady() {
+    Future.delayed(const Duration(seconds: 6));
     firebaseUser = Rx<User?>(_auth.currentUser);
     firebaseUser.bindStream(_auth.userChanges());
     ever(firebaseUser, _setInitialScreen);
@@ -25,8 +25,8 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? user) {
     user == null
-        ? Get.offAll(() => splashScreen.routeName)
-        : Get.offAll(() => HomePageScreen.routeName);
+        ? Get.offAll(() => splashScreen())
+        : Get.offAll(() => LoginSuccessScreen());
   }
 
   Future<void> createUserWithEmailAndPassword(
@@ -35,14 +35,14 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => splashScreen.routeName)
-          : Get.offAll(() => HomePageScreen.routeName);
+          ? Get.offAll(() => splashScreen())
+          : Get.offAll(() => LoginSuccessScreen());
     } on FirebaseAuthException catch (e) {
-      final ex = SignUpfailure.code(e.code);
+      final ex = SignUpFailure.fromFirebaseException(e);
       print("FIREBASE AUTH EXCEPTION - ${ex.message}");
       throw ex;
     } catch (_) {
-      const ex = SignUpfailure();
+      final ex = SignUpFailure('An unknown error occurred.');
       print("EXCEPTION - ${ex.message}");
       throw ex;
     }
@@ -50,9 +50,20 @@ class AuthenticationRepository extends GetxController {
 
   Future<void> loginWithEmailAndPassword(String email, String password) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      firebaseUser.value != null
+          ? Get.offAll(() => splashScreen())
+          : Get.offAll(() => LoginSuccessScreen());
     } on FirebaseAuthException catch (e) {
-    } catch (_) {}
+      final ex = SignInFailure.fromFirebaseException(e);
+      print("FIREBASE AUTH EXCEPTION - ${ex.message}");
+      throw ex;
+    } catch (_) {
+      final ex = SignInFailure('An unknown error occurred.');
+      print("EXCEPTION - ${ex.message}");
+      throw ex;
+    }
   }
 
   Future<void> logout() async => await _auth.signOut();
