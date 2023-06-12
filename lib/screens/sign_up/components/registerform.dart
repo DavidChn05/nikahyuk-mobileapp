@@ -2,47 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../components/defaultbutton.dart';
-import '../../../constants.dart';
 import '../../authentication/controllers/signup_controllers.dart';
+import '../../authentication/repository/authentication_repository.dart';
+import '../../authentication/repository/exceptions/signup_failure.dart';
 import '../../forgot_password/forgotpassword_screen.dart';
 
-class SignFormUp extends StatefulWidget {
-  const SignFormUp({super.key});
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
   @override
-  State<SignFormUp> createState() => _SignFormUpState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _SignFormUpState extends State<SignFormUp> {
+class _SignUpFormState extends State<SignUpForm> {
   final controller = Get.put(SignUpController());
   final _formKey = GlobalKey<FormState>();
-  bool remember = false;
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          buildNameFormField(),
+          SizedBox(
+            height: 30,
+          ),
           buildEmailFormField(),
           SizedBox(
             height: 30,
           ),
           buildPasswordFormField(),
-          SizedBox(
-            height: 20,
-          ),
           Row(
             children: [
-              Checkbox(
-                checkColor: Colors.white,
-                fillColor: MaterialStatePropertyAll(kPrimaryColor),
-                value: remember,
-                onChanged: (value) {
-                  setState(() {
-                    remember = value!;
-                  });
-                },
-              ),
-              Text("Remember me"),
               Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
@@ -59,39 +50,18 @@ class _SignFormUpState extends State<SignFormUp> {
           ),
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
-                SignUpController.instance.registerUser(
+                try {
+                  await SignUpController.instance
+                      .createUserWithEmailAndPassword(
                     controller.email.text.trim(),
-                    controller.password.text.trim());
+                    controller.password.text.trim(),
+                  );
+                } catch (e) {}
               }
-              // setState(() {
-              //   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              // });
             },
-          ), //MASIH BINGUNG CARANYA
-          // DefaultButton(
-          //   text: "Continue",
-          //   press: () async {
-          //     try {
-          //       final UserCredential userCredential =
-          //           await _auth.signInWithEmailAndPassword(
-          //         email: email,
-          //         password: password,
-          //       );
-          //       // SignIn berhasil, arahkan pengguna ke halaman sukses SignIn
-          //       Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-          //     } catch (e) {
-          //       // SignIn gagal, tampilkan pesan error kepada pengguna
-          //       print(e.toString());
-          //       // contoh menampilkan snackbar dengan pesan error
-          //       ScaffoldMessenger.of(context).showSnackBar(
-          //         SnackBar(
-          //             content: Text('Failed to sign in. Please try again.')),
-          //       );
-          //     }
-          //   },
-          // ),
+          ),
         ],
       ),
     );
@@ -99,6 +69,12 @@ class _SignFormUpState extends State<SignFormUp> {
 
   TextFormField buildNameFormField() {
     return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "enter your name";
+        } else
+          null;
+      },
       controller: controller.fullname,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
@@ -111,6 +87,12 @@ class _SignFormUpState extends State<SignFormUp> {
 
   TextFormField buildEmailFormField() {
     return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "enter your email";
+        } else
+          null;
+      },
       controller: controller.email,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
@@ -123,6 +105,12 @@ class _SignFormUpState extends State<SignFormUp> {
 
   TextFormField buildPasswordFormField() {
     return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "enter your password";
+        } else
+          null;
+      },
       controller: controller.password,
       decoration: InputDecoration(
         labelText: "Password",

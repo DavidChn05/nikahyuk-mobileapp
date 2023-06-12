@@ -46,7 +46,7 @@ class Body extends StatelessWidget {
         ProfileMenu(
           icon: 'assets/icons/exit.png',
           press: () {
-            AuthenticationRepository.intance.logout();
+            AuthenticationRepository.instance.logout();
           },
           text: 'Log Out',
         ),

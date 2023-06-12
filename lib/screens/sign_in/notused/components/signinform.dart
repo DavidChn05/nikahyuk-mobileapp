@@ -1,12 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../components/defaultbutton.dart';
 import '../../../../constants.dart';
 import '../../../authentication/controllers/signup_controllers.dart';
+import '../../../authentication/repository/authentication_repository.dart';
+import '../../../authentication/repository/exceptions/signin_failure.dart';
 import '../../../forgot_password/forgotpassword_screen.dart';
-import '../../../login_success/loginsuccess_screen.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -17,6 +17,8 @@ class SignInForm extends StatefulWidget {
 class _SignInFormState extends State<SignInForm> {
   final controller = Get.put(SignUpController());
   final _formKey = GlobalKey<FormState>();
+  final _authRepository = Get.find<AuthenticationRepository>();
+
   bool remember = false;
   @override
   Widget build(BuildContext context) {
@@ -59,50 +61,20 @@ class _SignInFormState extends State<SignInForm> {
           SizedBox(
             height: 20,
           ),
-          // DefaultButton(
-          //   text: "Continue",
-          //   press: () {
-          //     if (_formKey.currentState!.validate()) {
-          //       SignUpController.instance.registerUser(
-          //           controller.email.text.trim(),
-          //           controller.password.text.trim());
-          //     }
-          //     // setState(() {
-          //     //   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-          //     // });
-          //   },
-          // ), //MASIH BINGUNG CARANYA
           DefaultButton(
             text: "Continue",
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
-                FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: controller.email.text.trim(),
-                    password: controller.password.text.trim());
-              } else {
-                null;
+                try {
+                  await _authRepository.loginWithEmailAndPassword(
+                    controller.email.text.trim(),
+                    controller.password.text.trim(),
+                  );
+                } on SignInFailure catch (ex) {}
               }
             },
           ),
         ],
-      ),
-    );
-  }
-
-  TextFormField buildNameFormField() {
-    return TextFormField(
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "enter your name";
-        } else
-          null;
-      },
-      controller: controller.fullname,
-      keyboardType: TextInputType.name,
-      decoration: InputDecoration(
-        labelText: "Full Name",
-        hintText: "Enter your name",
-        floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
     );
   }

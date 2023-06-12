@@ -26,6 +26,10 @@ class SignInFailure implements Exception {
       case 'user-disabled':
         message = 'This user has been disabled. Please contact support.';
         break;
+      case "ERROR_WRONG_PASSWORD":
+      case "wrong-password":
+        message = 'Wrong email/password combination.';
+        break;
     }
 
     return SignInFailure(message);

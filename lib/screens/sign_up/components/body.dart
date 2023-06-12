@@ -40,7 +40,7 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: 60,
                 ),
-                SignFormUp(),
+                SignUpForm(),
                 SizedBox(height: 25),
                 HasAccountScreen(),
                 SizedBox(
