@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nikahyuk/components/defaultbutton.dart';
 import 'package:nikahyuk/models/user_model.dart';
 import 'package:nikahyuk/screens/myaccount/components/myprofilepicture.dart';
 
-import '../../../constants.dart';
 import '../../authentication/controllers/profile_controllers.dart';
 
 class Body extends StatelessWidget {
@@ -29,6 +26,7 @@ class Body extends StatelessWidget {
 
                 //controllers
                 final fullname = TextEditingController(text: user.fullName);
+                final id = TextEditingController(text: user.id);
                 final email = TextEditingController(text: user.email);
                 final password = TextEditingController(text: user.password);
 
@@ -40,6 +38,17 @@ class Body extends StatelessWidget {
                     MyProfilePicture(),
                     SizedBox(
                       height: 50,
+                    ),
+                    TextFormField(
+                      controller: id,
+                      enabled: false,
+                      decoration: InputDecoration(
+                        labelText: "ID",
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                     TextFormField(
                       controller: fullname,
@@ -71,19 +80,20 @@ class Body extends StatelessWidget {
                       obscureText: true,
                     ),
                     SizedBox(
-                      height: 150,
+                      height: 120,
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                       child: DefaultButton(
                         text: "Edit Profile",
                         press: () async {
-                          final userData = UserModel(
+                          final user = UserModel(
+                            id: id.text.trim(),
                             email: email.text.trim(),
                             fullName: fullname.text.trim(),
                             password: password.text.trim(),
                           );
-                          await controller.updateRecord(userData);
+                          await controller.updateRecord(user);
                         },
                       ),
                     ),
